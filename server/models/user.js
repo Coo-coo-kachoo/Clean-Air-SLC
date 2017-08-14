@@ -20,7 +20,20 @@ let userSchema = new Schema ({
   }
 });
 
-user
+userSchema.methods.auth = function(passwordAttempt, cb) {
+  bcrypt.compare(passwordAttempt + this.username, this.password, (err, result) => {
+    if(err) {
+      console.log(err);
+      cb(false);
+    } else if (result) {
+      cb (true);
+    } else {
+      cb(false);
+    }
+  });
+};
+
+module.exports = mongoose.model("users", userSchema);
 
 
 module.exports = mongoose.model("users", userSchema);

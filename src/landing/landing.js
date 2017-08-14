@@ -4,7 +4,7 @@ class Landing extends Component {
     render() {
         return (
             <div className="landing-imgs text-center" style={{backgroundImage: `url("${this.props.input.img[0]}")`}}>
-                <form className="opacity" onSubmit={(event) => {
+                <form className="landing-opacity" onSubmit={(event) => {
                     event.preventDefault();
                     this.props.handleSubmit(this.props.input.zip)}} className="">
                     <h4 className="landing-title">Enter your zip code for the current air quality in your area</h4>

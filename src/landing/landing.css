@@ -1,0 +1,24 @@
+/********************************
+*********LANDING PAGE**********
+********************************/
+.landing-imgs{
+    height: 100vh;
+    width: 100%;
+    background-image: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.zip-input{
+   width: 100px; 
+   margin-right: 15px;
+}
+
+.landing-title{
+    color: white;
+}
+
+
