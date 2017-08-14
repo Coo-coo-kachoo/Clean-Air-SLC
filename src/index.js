@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import "./index.css";
 
+import Navbar from "./navbar/nav.js";
 import LandingContainer from "./landing/landing-container.js";
 
 import { createStore, applyMiddleware } from "redux";
@@ -15,7 +16,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <LandingContainer/>
+                <Navbar />
+                <LandingContainer />
             </div>
         );
     }
