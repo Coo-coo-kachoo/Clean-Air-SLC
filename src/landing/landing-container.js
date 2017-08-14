@@ -10,7 +10,7 @@ class LandingContainer extends Component {
     constructor() {
         super();
         this.state = {
-            img: ["https://static1.squarespace.com/static/51269edde4b08376dc00502f/t/591c631b6a49631e377d0c88/1495032739759/Deluxe+Salt+Lake+City+Sightseeing+Bus+Tour.jpg?format=1500w"],
+            img: ["images/good.jpg", "images/moderate.jpg", "images/unhealthy-for-sensitive-groups.jpg", "images/unhealthy.jpg", "images/very-unhealthy.jpg", "images/hazardous.jpg"],
             zip: ""
         }
         autoBind(this);
@@ -26,6 +26,7 @@ class LandingContainer extends Component {
             zip: ""
         })
     }
+    
     render() {
         return (
             <div>
