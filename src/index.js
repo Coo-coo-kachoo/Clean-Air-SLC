@@ -4,12 +4,12 @@ import "./index.css";
 
 import LandingContainer from "./landing/landing-container.js";
 
-// import { createStore, applyMiddleware } from "redux";
-// import { Provider } from "react-redux";
-// import thunk from "redux-thunk";
-// import reducers from "./reducers";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import reducers from "./reducers";
 
-// let store = createStore(reducers, applyMiddleware(thunk));
+let store = createStore(reducers, applyMiddleware(thunk));
 
 class App extends Component {
     render() {
@@ -21,6 +21,5 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
 
-// ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
