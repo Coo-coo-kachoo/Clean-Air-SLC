@@ -17,7 +17,7 @@ let setup = () => {
     if(err) {
       console.log(err);
     } else {
-      console.log("User was saved");
+      console.log("Saved user");
     }
   });
 }
