@@ -16,6 +16,7 @@ let settings = require('./config/settings.js');
 
 //import routes
 let airQualityRouter = require('./routes/air-quality.js');
+let authRouter = require('./routes/auth.js');
 
 let PORT = process.env.PORT || settings.port;
 
