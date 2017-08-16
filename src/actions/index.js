@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/***********************************/
+/*****AIR QUALITY API ACTIONS*******/
+/***********************************/
+
 export function loadQuality(zip) {
     return (dispatch) => {
         return axios.get(`http://localhost:8080/airquality/${zip}`).then((response) => {
@@ -16,3 +20,13 @@ export function setQuality (airQuality) {
         airQuality
     }
 }
+
+/***********************************/
+/********AUTH SYSTEM ACTIONS********/
+/***********************************/
+
+
+
+/*************************************************/
+/********CONTENT MANAGEMENT SYSTEM ACTIONS********/
+/*************************************************/
