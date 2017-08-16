@@ -14,13 +14,35 @@ export function loadQuality(zip) {
     }
 }
 
-export function setQuality (airQuality, reportingArea) {
+
+
+export function setQuality (airQuality) {
     return {
         type: "SET_QUALITY",
         airQuality,
         reportingArea
     }
 }
+
+/*************************************************/
+/********CONTACT CONGRESS API*********************/
+/*************************************************/
+export function setCongressRep(rep) {
+    console.log(rep);
+    return {
+        type: "SET_REP",
+        rep
+    }
+}
+
+export function loadCongressRep(location) {
+    return (dispatch)=> {
+        return axios.get(`https://www.govtrack.us/api/v2/role?current=true&state=${location.location}`).then((response)=> {
+            dispatch(setCongressRep(response.data.objects))
+        })
+    }
+}
+
 
 /***********************************/
 /********AUTH SYSTEM ACTIONS********/
@@ -31,3 +53,4 @@ export function setQuality (airQuality, reportingArea) {
 /*************************************************/
 /********CONTENT MANAGEMENT SYSTEM ACTIONS********/
 /*************************************************/
+

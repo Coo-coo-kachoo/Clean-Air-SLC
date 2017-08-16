@@ -5,7 +5,8 @@ let defaultState = {
     username: "",
     password: "",
     token: "",
-    reportingArea: ""
+    reportingArea: "",
+    rep: []
 }
 
 const mainReducer = (state=defaultState, action) => {
@@ -13,8 +14,15 @@ const mainReducer = (state=defaultState, action) => {
         return {
             ...state,
             airQuality: action.airQuality,
-            reportingArea: "Reporting Area: " + action.reportingArea
+            reportingArea: "Reporting Area: " + action.reportingArea,
+            airQuality: action.airQuality
         }
+    } else if(action.type === "SET_REP") {
+        return {
+            ...state,
+            rep: action.rep
+        }
+   
     } else if (action.type === "SET_TOKEN") {
     return {
       ...state,
