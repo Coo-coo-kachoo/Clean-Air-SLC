@@ -1,0 +1,29 @@
+.slider{
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide{
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.arrows{
+    position: absolute;
+    background-color: transparent;
+    width: 50px;
+    border: none;
+}
+
+.left-arrow{
+    left: 0;
+}
+
+.right-arrow{
+    right: 0;
+}

@@ -1,12 +1,14 @@
 let defaultState = {
     airQuality: "",
+    reportingArea: ""
 }
 
 const mainReducer = (state=defaultState, action) => {
     if(action.type === "SET_QUALITY") {
         return {
             ...state,
-            airQuality: action.airQuality
+            airQuality: action.airQuality,
+            reportingArea: "Reporting Area: " + action.reportingArea
         }
     } else {
         return {

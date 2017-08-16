@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import "./landing/landing.css";
+import "./navbar/navbar.css";
+import "./slider/slider.css";
+
 
 import Navbar from "./navbar/nav.js";
 import LandingContainer from "./landing/landing-container.js";
+import Slider from "./slider/slider.js";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -18,6 +22,7 @@ class App extends Component {
             <div>
                 <Navbar />
                 <LandingContainer />
+                <Slider />
             </div>
         );
     }
