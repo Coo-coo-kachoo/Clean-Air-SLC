@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import "./landing/landing.css";
 import "./navbar/navbar.css";
-<<<<<<< HEAD
+import "./slider/slider.css";
+
 
 import Navbar from "./navbar/nav.js";
 import AuthComponent from "./authentication/auth.js";
-import "./slider/slider.css";
 import LandingContainer from "./landing/landing-container.js";
 import Slider from "./slider/slider.js";
 
