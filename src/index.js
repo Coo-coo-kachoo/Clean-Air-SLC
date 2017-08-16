@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import "./landing/landing.css";
+import "./navbar/navbar.css";
 
 import Navbar from "./navbar/nav.js";
 import LandingContainer from "./landing/landing-container.js";
+import AuthComponent from "./authentication/auth.js";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -18,6 +20,7 @@ class App extends Component {
             <div>
                 <Navbar />
                 <LandingContainer />
+                <AuthComponent />
             </div>
         );
     }

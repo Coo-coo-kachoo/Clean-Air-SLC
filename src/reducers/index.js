@@ -1,5 +1,10 @@
 let defaultState = {
     airQuality: "",
+    userQue: [],
+    currentUsers: [],
+    username: "",
+    password: "",
+    token: ""
 }
 
 const mainReducer = (state=defaultState, action) => {
@@ -8,12 +13,32 @@ const mainReducer = (state=defaultState, action) => {
             ...state,
             airQuality: action.airQuality
         }
-    } else {
-        return {
-            ...state
-        }
+    } else if (action.type === "SET_TOKEN") {
+    return {
+      ...state,
+      token: action.token
     }
-};
+  }  else if (action.type === "SET_PRIV") {
+    return {
+      ...state,
+      priv: action.priv
+    }
+  } else if (action.type === "SET_USER_QUE") {
+    return {
+      ...state,
+      userQue: action.data
+    }
+  } else if (action.type === "SET_CURRENT_USERS") {
+    return {
+      ...state,
+      currentUsers: action.data
+    }
+  } else {
+      return {
+        ...state
+    }
+  }
+}
 
 
 export default mainReducer;

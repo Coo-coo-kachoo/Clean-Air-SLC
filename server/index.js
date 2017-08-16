@@ -16,6 +16,7 @@ let settings = require('./config/settings.js');
 
 //import routes
 let airQualityRouter = require('./routes/air-quality.js');
+let authRouter = require('./routes/auth.js');
 
 let PORT = process.env.PORT || settings.port;
 
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 
 //app.use routers
 app.use('/airquality', airQualityRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
   console.log(`Server has started on port ${PORT}`);

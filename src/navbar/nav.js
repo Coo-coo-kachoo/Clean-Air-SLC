@@ -12,16 +12,14 @@ class Navbar extends React.Component {
         </div>
     }
     render() {
-        return(
+        return (
             <Menu>
                 <h1>Clean Air SLC</h1>
                 <a id="home" className="menu-item" href="#">Home</a>
                 <a id="contact" className="menu-item" href="https://www.epa.gov/home/forms/contact-epa#problem">Contact EPA</a>
+                <a id="login/signup" className="menu-item" href="#login-signup">Login/Signup</a>
                 <a id="about" className="menu-item" href="#">About</a>
-                
-
             </Menu>
-
         )
     }
 }
