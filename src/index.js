@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import "./landing/landing.css";
 import "./navbar/navbar.css";
-<<<<<<< HEAD
+
 
 import Navbar from "./navbar/nav.js";
 import AuthComponent from "./authentication/auth.js";
