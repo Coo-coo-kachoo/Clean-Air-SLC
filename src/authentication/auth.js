@@ -19,10 +19,11 @@ const customStyles = {
     bottom            : 0,
     // backgroundColor   : 'rgba(255, 255, 255, 0.75)'
     backgroundColor   : '#007EF5',
-    opacity           : .8
+    opacity           : .9
   },
   content : {
     // position                   : 'absolute',
+    opacity                    : 1,
     top                        : '30%',
     left                       : '50%',
     right                      : 'auto',
