@@ -10,9 +10,25 @@ export function loadQuality(zip) {
     }
 }
 
+export function loadCongressRep(location) {
+    return (dispatch)=> {
+        return axios.get(`https://www.govtrack.us/api/v2/role?current=true&state=${location.location}`).then((response)=> {
+            dispatch(setCongressRep(response.data.objects))
+        })
+    }
+}
+
 export function setQuality (airQuality) {
     return {
         type: "SET_QUALITY",
         airQuality
+    }
+}
+
+export function setCongressRep(rep) {
+    console.log(rep);
+    return {
+        type: "SET_REP",
+        rep
     }
 }

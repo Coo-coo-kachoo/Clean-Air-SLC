@@ -5,8 +5,10 @@ import ReactDOM from "react-dom";
 import "./landing/landing.css";
 import "./navbar/navbar.css";
 
+
 import Navbar from "./navbar/nav.js";
 import LandingContainer from "./landing/landing-container.js";
+import ContactCongressContainer from "./contact/contact-congress-container.js";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -21,6 +23,7 @@ class App extends Component {
             <div>
                 <Navbar />
                 <LandingContainer />
+                <ContactCongressContainer />
             </div>
         );
     }
