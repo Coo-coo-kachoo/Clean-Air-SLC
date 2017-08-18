@@ -27,6 +27,8 @@ class LoginContainer extends React.Component {
       username: "",
       password: ""
     });
+    // document.querySelector('.bm-overlay').style.display = 'inherit';
+    // document.querySelector('.bm-menu-wrap').style.display = 'inherit';
   }
   render() {
     return (

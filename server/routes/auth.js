@@ -66,6 +66,7 @@ authRouter.post("/login", passport.authenticate("local", {session: false}), (req
       res.status(201).send({
         "message": "Success, Auth token issued",
         "token": jwt.sign(payload, settings.secret, {
+          //set to expire in 24 hours : 60 * 60 * 24
           expiresIn: 30 * 60
         }),
         "priv": data.priv
@@ -151,20 +152,7 @@ authRouter.post("/userque", authorization, admin, (req, res) => {
   });
 });
 
-//delete a user from userque
-authRouter.delete("/userque/:id", authorization, admin, (req, res) => {
-  UserQue.findByIdAndRemove({
-    _id: req.params.id
-  }, (err, data) => {
-    if (err) {
-      res.status(500).send({"message": "Err in system", err});
-    } else if (data === null) {
-      res.status(404).send({"message": `User with id of ${req.params.id} was not found`});
-    } else {
-      res.status(200).send({"message": `User was deleted with username of ${data.username}`});
-    }
-  });
-});
+
 
 //get users in current users
 authRouter.get("/user", authorization, admin, (req, res) => {
@@ -191,6 +179,36 @@ authRouter.delete("/user/:id", authorization, admin, (req, res) => {
       res.status(404).send({"message": `User with id of ${data._id} was not found`});
     } else {
       res.status(200).send({"message": `User was deleted with username of ${data.username}`});
+    }
+  });
+});
+
+//delete a user from userque
+authRouter.delete("/userque/:id", authorization, admin, (req, res) => {
+  UserQue.findByIdAndRemove({
+    _id: req.params.id
+  }, (err, data) => {
+    if (err) {
+      res.status(500).send({"message": "Err in system", err});
+    } else if (data === null) {
+      res.status(404).send({"message": `User with id of ${req.params.id} was not found`});
+    } else {
+      res.status(200).send({"message": `User was deleted with username of ${data.username}`});
+    }
+  });
+});
+
+//change user status
+authRouter.put("/user/:id", authorization, admin, (req, res) => {
+  User.findByIdAndUpdate({
+    _id: req.params.id
+  }, {$set: {priv: req.body.priv}}, (err, data) => {
+    if (err) {
+      res.status(500).send({"message": "Err in system", err});
+    } else if (data === null) {
+      res.status(404).send({"message": `User with id of ${data._id} was not found`});
+    } else {
+      res.status(200).send({"message": `User status was updated with username of ${data.username}`});
     }
   });
 });

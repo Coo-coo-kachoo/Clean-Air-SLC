@@ -6,6 +6,7 @@ import "./landing/landing.css";
 import "./navbar/navbar.css";
 import "./slider/slider.css";
 import "./contact/contact.css";
+import "./authentication/auth-css/index.css";
 
 
 import Navbar from "./navbar/nav.js";

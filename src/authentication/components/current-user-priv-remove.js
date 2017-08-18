@@ -16,16 +16,15 @@ class CurrentUserPrivRemove extends React.Component {
   }
   render() {
     return (
-      <div>
-        <p>{this.props.user.username}</p>
-        <p>{this.props.user.priv}</p>
-        <select value={this.state.selected} onChange={this.handleChange}>
+      <div className="user-wrapper">
+        <p className="user-name priv-level">{this.props.user.username} : {this.props.user.priv}</p>
+        <select className="priv-drop-down" value={this.state.selected} onChange={this.handleChange}>
           <option value="">Select Priviledge</option>
           <option value="admin">Admin</option>
           <option value="user">User</option>
         </select>
-        <button onClick={() => {this.props.handleStatus(this.props.user.username, this.state.selected, this.props.token);}}>Change Status</button>
-        <button onClick={() => {this.props.handleDelete(this.props.user.username, this.props.user._id, this.props.token)}}>Remove User</button>
+        <button className="btn btn-default btn-success" onClick={() => {this.props.handleStatus(this.props.user._id, this.state.selected, this.props.token);}}>Change Status</button>
+        <button className="btn btn-default btn-success" onClick={() => {this.props.handleDeleteList(this.props.user.username, this.props.user._id, this.props.token)}}>Remove User</button>
       </div>
     )
   }

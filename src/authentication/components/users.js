@@ -6,7 +6,7 @@ class Users extends React.Component {
     console.log(this.props.currentUsers);
     return this.props.currentUsers.map((item, index) => {
       return (
-        <CurrentUserPrivRemove handleDelete={this.props.handleDelete} token={this.props.token} key={item.username + index} user={item}/>
+        <CurrentUserPrivRemove handleStatus={this.props.handleStatus} handleDeleteList={this.props.handleDeleteList} token={this.props.token} key={item.username + index} user={item}/>
       )
     })
   }
@@ -15,6 +15,7 @@ class Users extends React.Component {
       <div className="users-wrapper">
         <h5>Current Users:</h5>
         {this.genCurrentUsers()}
+        <button className="btn btn-default btn-success" className="logout-button" onClick={() => this.props.handleLogout()}>Log Out</button>
       </div>
     )
   }

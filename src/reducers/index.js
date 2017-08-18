@@ -6,7 +6,10 @@ let defaultState = {
     password: "",
     token: "",
     reportingArea: "",
-    rep: []
+    rep: [],
+    priv: "",
+    isShowingLogin: false,
+    isShowingSignup: false
 }
 
 const mainReducer = (state=defaultState, action) => {
@@ -22,9 +25,8 @@ const mainReducer = (state=defaultState, action) => {
             ...state,
             rep: action.rep
         }
-   
     } else if (action.type === "SET_TOKEN") {
-    return {
+      return {
       ...state,
       token: action.token
     }
@@ -42,6 +44,22 @@ const mainReducer = (state=defaultState, action) => {
     return {
       ...state,
       currentUsers: action.data
+    }
+  } else if (action.type === "LOG_OUT") {
+    return {
+      ...state,
+      priv: "",
+      token: ""
+    }
+  } else if (action.type === "TOGGLE_SIGNUP") {
+    return {
+      ...state,
+      isShowingSignup: !state.isShowingSignup
+    }
+  } else if (action.type === "TOGGLE_LOGIN") {
+    return {
+      ...state,
+      isShowingLogin: !state.isShowingLogin
     }
   } else {
       return {

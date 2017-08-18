@@ -4,6 +4,7 @@ import autoBind from "react-autobind";
 import { connect } from "react-redux";
 import * as actionCreators from "../actions";
 import Modal from "react-modal";
+import * as authActionCreators from "../actions/auth-actions.js";
 
 import LoginContainer from "./containers/login-container.js";
 import SignupContainer from "./containers/signup-container.js";
@@ -17,13 +18,13 @@ const customStyles = {
     left              : 0,
     right             : 0,
     bottom            : 0,
-    // backgroundColor   : 'rgba(255, 255, 255, 0.75)'
-    backgroundColor   : '#007EF5',
-    opacity           : .9
+    backgroundColor   : 'rgba(0, 126, 245, 0.75)',
+    // backgroundColor   : '#007EF5',
+    zIndex            : 0
   },
   content : {
     // position                   : 'absolute',
-    opacity                    : 1,
+    zIndex                     : '150 !important',
     top                        : '30%',
     left                       : '50%',
     right                      : 'auto',
@@ -41,30 +42,40 @@ const customStyles = {
 
 
 class AuthComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isShowingLogin: false,
-      isShowingSignup: false
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     isShowingLogin: false,
+  //     isShowingSignup: false
+  //   }
+  //   autoBind(this);
+  // }
+  // toggleModal(key) {
+  //   this.setState({
+  //     [key]: !this.state[key]
+  //   });
+  // }
+  componentWillMount() {
+    //saying no token in reducer, but there is a token in localStorage
+    if(this.props.token === "" && localStorage.getItem("token") && this.props.priv === "" && localStorage.getItem("priv")) {
+      this.props.setTokenAndPrivLocalStorage(localStorage.getItem("token"), localStorage.getItem("priv"));
     }
-    autoBind(this);
   }
-  toggleModal(key) {
-    this.setState({
-      [key]: !this.state[key]
-    });
+  setMenuCSSToDefault() {
+    // document.querySelector('.bm-overlay').style.display = 'inherit';
+    // document.querySelector('.bm-menu-wrap').style.display = 'inherit';
   }
   render() {
     return (
       <div id="login-signup" className="auth-component">
-        <button onClick = {() => {this.toggleModal("isShowingSignup")}}>Signup for More Information</button>
-        <Modal style={customStyles} isOpen={this.state.isShowingSignup} onRequestClose={() => {this.toggleModal("isShowingSignup");}} contentLabel="Signup">
-          <SignupContainer toggleModal={this.toggleModal} />
+        {/* <button style={{display: this.props.token ? "none" : "inherit"}} onClick = {() => {this.toggleModal("isShowingSignup")}}>Signup for More Information</button> */}
+        <Modal style={customStyles} isOpen={this.props.isShowingSignup} onRequestClose={() => {this.props.toggleSignup(); this.setMenuCSSToDefault();}} contentLabel="Signup">
+          <SignupContainer toggleModal={this.props.toggleSignup} />
         </Modal>
 
-        <button onClick={() => {this.toggleModal("isShowingLogin")}}>Admin Login</button>
-        <Modal style={customStyles} isOpen={this.state.isShowingLogin} onRequestClose={() => {this.toggleModal("isShowingLogin");}} contentLabel="Login">
-          <LoginContainer toggleModal={this.toggleModal} />
+        {/* <button style={{display: this.props.token ? "none" : "inherit"}} onClick={() => {this.toggleModal("isShowingLogin")}}>Admin Login</button> */}
+        <Modal style={customStyles} isOpen={this.props.isShowingLogin} onRequestClose={() => {this.props.toggleLogin(); this.setMenuCSSToDefault();}} contentLabel="Login">
+          <LoginContainer toggleModal={this.props.toggleLogin} />
         </Modal>
 
         <UserQueContainer />
@@ -78,4 +89,6 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps, actionCreators) (AuthComponent);
+
+
+export default connect(mapStateToProps, {...actionCreators, ...authActionCreators}) (AuthComponent);

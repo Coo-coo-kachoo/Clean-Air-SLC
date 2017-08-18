@@ -1,11 +1,36 @@
 import axios from "axios";
 
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+    // Do something with response data
+    return response;
+  }, function (error) {
+    // Do something with response error
+    if (401 === error.response.status) {
+    alert("You've been logged out, please log back in to continue session");
+    localStorage.removeItem("token");
+    localStorage.removeItem("priv");
+    //Promise.reject runs a catch((err))
+    return Promise.reject(error);
+   } else {
+       return Promise.reject(error);
+   }
+  });
+
+export function clear() {
+  return (dispatch) => {
+    dispatch(setToken(""));
+    dispatch(setPriv(""));
+  }
+}
+
 export function login (username, password) {
   return (dispatch) => {
     return axios.post("http://localhost:8080/auth/login", {username, password}).then((response) => {
       dispatch(setToken(response.data.token));
-      console.log(response.data.token);
       dispatch(setPriv(response.data.priv));
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("priv", response.data.priv);
     })
     .catch((err) => {
       alert("username or password are not correct...")
@@ -15,7 +40,6 @@ export function login (username, password) {
 }
 
 export function signup(username, password) {
-
   return (dispatch) => {
     return axios.post("http://localhost:8080/auth/signup", {username, password}).then((response) => {
       alert("account created");
@@ -33,30 +57,34 @@ export function loadUserQue(token) {
       dispatch(setUserQue(response.data.data));
     })
     .catch((err) => {
+      dispatch(clear());
       throw err;
     });
   }
 }
 
-export function loadUsers(username, priv, token) {
+export function loadUsers(token) {
   return (dispatch) => {
     return axios.get("http://localhost:8080/auth/user", {headers: {Authorization: `Bearer ${token}`}}).then((response) => {
       dispatch(setCurrentUsers(response.data.data));
     })
     .catch((err) => {
+      dispatch(clear());
       throw err;
     });
   }
 }
 
-//WORKING ON
-export function changeStatus(username, priv, token) {
+
+export function changeStatus(id, priv, token) {
   return (dispatch) => {
-    return axios.post("http://localhost:8080/auth/user", {username, priv}, {headers: {Authorization: `Bearer ${token}`}}).then((response) => {
-      alert(`${username} status changed to: ${priv}`)
-      dispatch(loadUserQue(token));
+    //priv value is what is being updated
+    return axios.put(`http://localhost:8080/auth/user/${id}`, {priv}, {headers: {Authorization: `Bearer ${token}`}}).then((response) => {
+      alert(`${id} status changed to: ${priv}`)
+      dispatch(loadUsers(token));
     })
     .catch((err) => {
+      dispatch(clear());
       throw err;
     });
   }
@@ -67,22 +95,47 @@ export function addUser(username, priv, token) {
     return axios.post("http://localhost:8080/auth/userque", {username, priv}, {headers: {Authorization: `Bearer ${token}`}}).then((response) => {
       alert(`${username} added with authorization level: ${priv}`)
       dispatch(loadUserQue(token));
+      dispatch(loadUsers(token));
     })
     .catch((err) => {
+      dispatch(clear());
       throw err;
     });
   }
 }
 
-export function deleteUser(username, id, token) {
+export function deleteUserQue(username, id, token) {
   return (dispatch) => {
     return axios.delete(`http://localhost:8080/auth/userque/${id}`, {headers: {Authorization: `Bearer ${token}`}}).then((response) => {
       alert(`${username} has been deleted`)
       dispatch(loadUserQue(token));
     })
     .catch((err) => {
+      dispatch(clear());
       throw err;
     });
+  }
+}
+
+export function deleteUserList(username, id, token) {
+  return (dispatch) => {
+    return axios.delete(`http://localhost:8080/auth/user/${id}`, {headers: {Authorization: `Bearer ${token}`}}).then((response) => {
+      alert(`${username} has been deleted`)
+      dispatch(loadUsers(token));
+    })
+    .catch((err) => {
+      dispatch(clear());
+      throw err;
+    });
+  }
+}
+
+export function setTokenAndPrivLocalStorage(token, priv) {
+  return (dispatch) => {
+    dispatch(setToken(token));
+    dispatch(setPriv(priv));
+    dispatch(loadUsers(token));
+    dispatch(loadUserQue(token));
   }
 }
 
@@ -112,5 +165,14 @@ export function setPriv(priv) {
   return {
     type: "SET_PRIV",
     priv
+  }
+}
+
+export function logout() {
+  alert("You have logged out.  Have a nice day!");
+  localStorage.removeItem("token");
+  localStorage.removeItem("priv");
+  return {
+    type: "LOG_OUT"
   }
 }
