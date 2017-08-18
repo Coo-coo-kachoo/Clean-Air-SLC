@@ -5,7 +5,7 @@ class LeftArrow extends Component {
     render() {
         return (
         <button  onClick={() => {this.props.nextSlide()}} className="left-arrow arrows">
-            <FontAwesome name="arrow-left" size= "3x" aria-hidden="true" />
+            <FontAwesome name="angle-left" size= "5x" aria-hidden="true" />
         </button>
         );
     }

@@ -31,7 +31,7 @@ class Slider extends Component {
     }
     render() {
         return (
-            <div className="slider">
+            <section id="slider" className="slider">
 
                 { this.state.slideCount === 1 ? <SlideOne /> : null }
                 { this.state.slideCount === 2 ? <SlideTwo /> : null }
@@ -40,7 +40,7 @@ class Slider extends Component {
                 <LeftArrow nextSlide={this.nextSlide}/>
                 <RightArrow  previousSlide={this.previousSlide} />
 
-            </div>
+            </section>
         );
     }
 }
