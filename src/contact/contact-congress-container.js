@@ -31,13 +31,14 @@ class ContactCongressContainer extends React.Component {
     }
     render() {
         return(
-            <div>
+            <div  className="main-contact-output" style={{backgroundImage:"url('./images/good.jpg')"}}>
                 <ContactCongress 
                     input={this.state}
                     handleChange={this.handleChange}
                     handleClick={this.handleUpdateValue}  />
-
-            <RepList rep={this.props.rep} />
+                <div className="reps">
+                    <RepList rep={this.props.rep} />
+                </div>
             </div>
         )
     }

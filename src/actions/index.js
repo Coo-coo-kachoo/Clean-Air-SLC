@@ -16,7 +16,7 @@ export function loadQuality(zip) {
 
 
 
-export function setQuality (airQuality) {
+export function setQuality (airQuality, reportingArea) {
     return {
         type: "SET_QUALITY",
         airQuality,

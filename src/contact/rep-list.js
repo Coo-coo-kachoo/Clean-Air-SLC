@@ -10,7 +10,7 @@ class RepList extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="rep-background">
                 {this.genReps()}
             </div>
         );

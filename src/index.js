@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import "./landing/landing.css";
 import "./navbar/navbar.css";
 import "./slider/slider.css";
-
+import "./contact/contact.css";
 
 import Navbar from "./navbar/nav.js";
 import AuthComponent from "./authentication/auth.js";

@@ -1,4 +1,40 @@
-#congress-output {
-    height: 20px;
-    width: 100%;
+.main-contact-output {
+    margin-top: -20px;
+    height: 2500px;
+    background-attachment: fixed;
+    text-align: center;
+
+}
+
+#title {
+    background-color: #007EF5;
+    opacity: .8;
+    color: white;
+}
+
+.main-contact-output h1 {
+    padding: 30px 0px 25px 0;
+    text-align: center;
+ 
+}
+
+.contact-input {
+    margin: 50px 0px 50px 0;
+    text-align: center;
+    width: 20%;
+}
+
+.reps {
+    margin-top: 20px !important;
+    margin: auto;
+    color: white;
+    width: 50%;
+    height: 70%;
+    font-size: 2em;
+}
+
+.rep-background {
+    background-color: rgba(0,0,0,.3);
+
+
 }
