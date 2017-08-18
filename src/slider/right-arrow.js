@@ -5,7 +5,7 @@ class RightArrow extends Component {
     render() {
         return (
         <button onClick={() => {this.props.previousSlide()}} className="right-arrow arrows">
-            <FontAwesome name="arrow-right" size= "3x" aria-hidden="true" />
+            <FontAwesome name="angle-right" size= "5x" aria-hidden="true" />
         </button>
         );
     }

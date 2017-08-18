@@ -5,6 +5,7 @@ import "./navbar/navbar.css";
 import "./slider/slider.css";
 
 
+
 import Navbar from "./navbar/nav.js";
 import AuthComponent from "./authentication/auth.js";
 import LandingContainer from "./landing/landing-container.js";
@@ -23,8 +24,8 @@ class App extends Component {
             <div>
                 <Navbar />
                 <LandingContainer />
-                <AuthComponent />
                 <Slider />
+                <AuthComponent />
             </div>
         );
     }

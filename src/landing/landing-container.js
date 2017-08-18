@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import autoBind from "react-autobind";
+import WOW from "wowjs";
 
 import Landing from "./landing.js";
 
 import {connect} from "react-redux";
 import * as actionCreators from "../actions";
+
 
 class LandingContainer extends Component {
     constructor() {
@@ -16,6 +18,7 @@ class LandingContainer extends Component {
         }
         autoBind(this);
     }
+   
     componentDidUpdate() {
         if(this.props.airQuality === "Good" && this.state.backgroundColor !== "green") {
             this.setState({
@@ -31,7 +34,7 @@ class LandingContainer extends Component {
             })
         } else if (this.props.airQuality === "Unhealthy for Sensitive Groups" && this.state.backgroundColor !== "orange") {
             this.setState({
-                img: "images/unhealthy-for-sensitive-groups",
+                img: "images/unhealthy-for-sensitive-groups.jpg",
                 backgroundColor: "orange",
                 zip: ""
             })
@@ -62,6 +65,9 @@ class LandingContainer extends Component {
     }
     handleSubmit(zip) {
         this.props.loadQuality(zip);
+    }
+    componentDidMount() {
+        new WOW.WOW().init();
     }
     render() {
         return (

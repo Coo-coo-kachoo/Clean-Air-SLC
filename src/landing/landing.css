@@ -47,4 +47,17 @@
     border-radius: 5px;
 }
 
+.angle-down{
+    position: absolute;
+    bottom: 0;
+    color: white;
+    width:75px;
+    background-color: transparent;
+}
+
+.angle-down:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 100%;
+}
+
 
