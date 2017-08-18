@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./landing/landing.css";
 import "./navbar/navbar.css";
 import "./slider/slider.css";
+import "./authentication/auth-css/index.css";
 
 
 import Navbar from "./navbar/nav.js";
@@ -23,8 +24,8 @@ class App extends Component {
             <div>
                 <Navbar />
                 <LandingContainer />
-                <AuthComponent />
                 <Slider />
+                <AuthComponent />
             </div>
         );
     }

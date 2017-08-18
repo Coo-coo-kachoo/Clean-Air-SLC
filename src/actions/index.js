@@ -22,10 +22,22 @@ export function setQuality (airQuality, reportingArea) {
     }
 }
 
+export function toggleSignup() {
+  return {
+    type: "TOGGLE_SIGNUP"
+  }
+}
+
+export function toggleLogin() {
+  return {
+    type: "TOGGLE_LOGIN"
+  }
+}
+
 /***********************************/
 /********AUTH SYSTEM ACTIONS********/
 /***********************************/
-
+//in seperate file: auth-actions.js
 
 
 /*************************************************/

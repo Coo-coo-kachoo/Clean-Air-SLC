@@ -25,7 +25,7 @@ class UserQueContainer extends React.Component {
   render() {
     return (
       <div>
-        <UserQue handleDelete={this.props.deleteUser} handleAdd={this.props.addUser} users={this.props.userQue} priv={this.props.priv} token={this.props.token} />
+        <UserQue handleDeleteQue={this.props.deleteUserQue} handleAdd={this.props.addUser} users={this.props.userQue} priv={this.props.priv} token={this.props.token} />
       </div>
     )
   }

@@ -15,19 +15,18 @@ class UsersContainer extends React.Component {
     autoBind(this);
   }
 componentDidUpdate() {
-  if(!this.state.didReq){
-    this.props.loadUsers(this.props.username, this.props.priv, this.props.token);
+  if(!this.state.didReq && this.props.currentUsers.length <=0 && this.props.priv === "admin"){
+    this.props.loadUsers(this.props.token);
     this.setState({
       didReq: !this.state.didReq
     });
   }
-
 }
+
   render() {
-    console.log(this.props);
     return (
-      <div className="users-container-wrapper">
-        <Users handleStatus={this.props.changeStatus} currentUsers={this.props.currentUsers} handleDelete={this.props.deleteUser} />
+      <div className="users-container-wrapper" style={{display: this.props.token ? 'inherit' :' none'}}>
+        <Users token={this.props.token} handleLogout={this.props.logout} handleStatus={this.props.changeStatus} currentUsers={this.props.currentUsers} handleDeleteList={this.props.deleteUserList} handleDeleteQue={this.props.deleteUserQue} />
       </div>
     )
   }
