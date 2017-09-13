@@ -23,7 +23,7 @@ class Landing extends Component {
                     
                 </form>
                 </div>
-                <a href="#slider"  ><FontAwesome className="angle-down wow fadeInDownBig" name="angle-down" size="5x" data-wow-iteration="1" data-wow-duration="2s"/></a>
+                <a href="#slider"><FontAwesome className="angle-down wow fadeInDownBig" name="angle-down" size="5x" data-wow-iteration="1" data-wow-duration="2s"/></a>
             </div>
         );
     }

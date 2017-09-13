@@ -14,7 +14,7 @@ class LandingContainer extends Component {
         this.state = {
             img: "images/good.jpg",
             zip: "",
-            backgroundColor: "purple",
+            backgroundColor: "black",
         }
         autoBind(this);
     }
@@ -56,7 +56,7 @@ class LandingContainer extends Component {
                 backgroundColor: "maroon",
                 zip: ""
             })
-        }    
+        }
     }
     handleChange(key, event) {
         this.setState({

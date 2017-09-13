@@ -7,7 +7,11 @@ import axios from "axios";
 export function loadQuality(zip) {
     return (dispatch) => {
         return axios.get(`http://localhost:8080/airquality/${zip}`).then((response) => {
-            dispatch(setQuality(response.data.data[0].Category.Name, response.data.data[0].ReportingArea));
+            if(response.data.data.length === 0){
+                dispatch(setQuality("No Reported Information for this Area", "None"));
+            }else {
+                dispatch(setQuality(response.data.data[0].Category.Name, response.data.data[0].ReportingArea));
+            }
         }).catch((error) => {
             throw error;
         })
